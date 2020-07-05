@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Guess</title>
+</head>
+<body>
+    <p>HELLOOOOO</p>
+    <p id="countNumber"></p>
+    <div id="message"></div>
+    <input type="number" id="Inputnumber"/>
+
+    <button id="guessButton" onclick="handleGuessBtnClick()">Guess </button>
+    <h2 id="result"></h2>
+    <h2 id="passGuess">
+
+    </h2>
+    <script>
+
+            const correctNumber = 10;
+            const passGuess = [];
+            let passGuessStr = "";
+            let count = 10;
+
+        function handleGuessBtnClick(){
+            
+            if(count <= 0) return ;
+            //lay mot value random
+
+            // lấy giá trị của input
+            //function parseInt covert tu string sang interger
+            const inputValue = parseInt(document.getElementById("Inputnumber").value);
+
+            if(inputValue < correctNumber){
+                document.getElementById("result").innerHTML = "Sorry your guess is too low";
+                document.getElementById("result").style.color =  "#ff0000";
+            }
+
+            if(inputValue > correctNumber){
+                document.getElementById("result").innerHTML = "Sorry your guess is too high";
+                document.getElementById("result").style.color =  "#ff0000";
+            }
+
+// hai dau bang la so sanh ve gia tri
+//con ba dau bang la so sanh ca ve kieu du lieu
+            if(inputValue === correctNumber){
+                document.getElementById("result").innerHTML = "Congratulations!! You guessed correctly.";
+                document.getElementById("result").style.color =  "blue";
+            }
+
+            //them cai gia tri input vua nhap va trong mang
+            //passGuess.push(inputValue);
+            passGuessStr = passGuessStr + `${inputValue}` + "<br>";
+            // mooi lan nhap thi in luon no ra
+            document.getElementById("passGuess").innerHTML = passGuessStr;
+            // milestone 8: cu moi lan click vao nut thi count se giam di
+            count--;
+            document.getElementById("countNumber").innerHTML = `${count}`;
+            console.log('The input number is',inputValue);
+        }
+
+
+    </script>
+</body>
+</html>
